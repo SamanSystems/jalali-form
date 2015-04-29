@@ -3,7 +3,7 @@
     "type": "cakephp-plugin",
     "description": "This is a cakephp3 Plugin which let you easily create forms which is Jalali calendar friendly.",
     "require": {
-        "samansystems/intldatetime": "*",
+        "samansystems/intldatetime": "*"
     },
     "keywords": [
         "cakephp",
@@ -11,7 +11,7 @@
         "time",
         "DateTime",
         "jalali",
-        "formhelper",
+        "formhelper"
     ],
     "license": "MIT",
     "authors": [
