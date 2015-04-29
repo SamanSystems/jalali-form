@@ -13,7 +13,6 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 namespace JalaliForm\View\Widget;
-use Cake\View\Widget\DateTimeWidget;
 use IntlDateTime\IntlDateTime;
 
 /**
@@ -22,7 +21,7 @@ use IntlDateTime\IntlDateTime;
  * This class is intended as an internal implementation detail
  * of Cake\View\Helper\FormHelper and is not intended for direct use.
  */
-class JalaliDateTimeWidget extends DateTimeWidget
+class DateTimeWidget extends \Cake\View\Widget\DateTimeWidget
 {
     /**
      * Deconstructs the passed date value into all time units

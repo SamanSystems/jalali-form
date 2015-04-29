@@ -1,6 +1,7 @@
 <?php
 
 namespace JalaliForm\View\Helper;
+
 use Cake\View\Helper\FormHelper as Helper;
 use Cake\View\View;
 use InvalidArgumentException;
@@ -8,51 +9,28 @@ use IntlDateTime\IntlDateTime;
 
 class JalaliFormHelper extends Helper
 {
-	protected $_widgets = [
-        'datetimeJalali' => ['JalaliForm\View\Widget\JalaliDateTime', 'select'],
+    protected $_widgets = [
+        'datetime' => ['JalaliForm\View\Widget\DateTimeWidget', 'select'],
     ];
-	public function __construct(View $View, array $config = [])
+
+    /**
+     * Construct the widgets and binds the default context providers.
+     *
+     * @param \Cake\View\View $View The View this helper is being attached to.
+     * @param array $config Configuration settings for the helper.
+     */
+    public function __construct(View $View, array $config = [])
     {
         $this->_defaultWidgets = $this->_widgets + $this->_defaultWidgets;
         parent::__construct($View, $config);
-	}
-	
-	public function datetime($fieldName, array $options = []) {
-		$options += [
-            'empty' => true,
-            'value' => null,
-            'interval' => 1,
-            'round' => null,
-            'monthNames' => true,
-            'minYear' => null,
-            'maxYear' => null,
-            'orderYear' => 'desc',
-            'timeFormat' => 24,
-            'second' => false,
-        ];
-        $options = $this->_initInputField($fieldName, $options);
-        $options = $this->_datetimeOptions($options);
-        return $this->widget('datetimeJalali', $options);
-	}
-	
-	public function date($fieldName, array $options = [])
-    {
-        $options += [
-            'empty' => true,
-            'value' => null,
-            'monthNames' => true,
-            'minYear' => null,
-            'maxYear' => null,
-            'orderYear' => 'desc',
-        ];
-        $options['hour'] = $options['minute'] = false;
-        $options['meridian'] = $options['second'] = false;
-
-        $options = $this->_initInputField($fieldName, $options);
-        $options = $this->_datetimeOptions($options);
-        return $this->widget('jdate', $options);
     }
 	
+    /**
+     * Helper method for converting from FormHelper options data to widget format.
+     *
+     * @param array $options Options to convert.
+     * @return array Converted options.
+     */
 	protected function _datetimeOptions($options)
     {
         foreach ($this->_datetimeParts as $type) {
